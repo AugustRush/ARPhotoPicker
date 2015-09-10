@@ -72,13 +72,53 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
     
     self.collectionView.allowsMultipleSelection = self.allowsMultipleSelection;
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0);
+    self.collectionView.contentInset = UIEdgeInsetsMake(10, 0, 50, 0);
     
     [self.collectionView registerNib:[UINib nibWithNibName:reuseIdentifier bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:footerReuseIdemtifier bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerReuseIdemtifier];
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelItemClicked:)];
     [self.navigationItem setRightBarButtonItem:cancelItem];
+    
+    UIToolbar *bottomBar = [[UIToolbar alloc] init];
+    bottomBar.barTintColor = [UIColor colorWithWhite:244/255.0 alpha:1];
+    [self.view addSubview:bottomBar];
+    
+    UIBarButtonItem *previewItem = [[UIBarButtonItem alloc] initWithTitle:@"preview" style:UIBarButtonItemStylePlain target:self action:@selector(previewItemClicked:)];
+    UIBarButtonItem *flexItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *sendItem = [[UIBarButtonItem alloc] initWithTitle:@"send" style:UIBarButtonItemStylePlain target:self action:@selector(sendItemClicked:)];
+    
+    [bottomBar setItems:@[previewItem,flexItem,sendItem]];
+    
+    bottomBar.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:bottomBar
+                                                         attribute:NSLayoutAttributeLeft
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.view
+                                                         attribute:NSLayoutAttributeLeft
+                                                        multiplier:1
+                                                           constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:bottomBar
+                                                          attribute:NSLayoutAttributeRight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeRight
+                                                         multiplier:1
+                                                           constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:bottomBar
+                                                          attribute:NSLayoutAttributeBottom
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeBottom
+                                                         multiplier:1
+                                                           constant:0]];
+    [bottomBar addConstraint:[NSLayoutConstraint constraintWithItem:bottomBar
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1
+                                                           constant:44]];
 }
 
 #pragma mark - custom event methods
@@ -87,6 +127,14 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
     [self dismissViewControllerAnimated:YES completion:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:ARPhotoPickerAssetsControllerDismissNotification object:nil];
     }];
+}
+
+- (void)previewItemClicked:(id)sender {
+
+}
+
+- (void)sendItemClicked:(id)sender {
+
 }
 
 #pragma mark <UICollectionViewDataSource>
