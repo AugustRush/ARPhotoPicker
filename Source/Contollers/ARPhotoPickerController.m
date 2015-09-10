@@ -24,7 +24,9 @@
     self = [super initWithRootViewController:groupController];
     if (self) {
         _autoPushToUserPhotoLibrary = YES;
+        _allowsMultipleSelection = YES;
         groupController.autoPushToUserPhotoLibrary = _autoPushToUserPhotoLibrary;
+        groupController.allowsMultipleSelection = _allowsMultipleSelection;
     }
     return self;
 }

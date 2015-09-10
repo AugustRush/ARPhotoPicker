@@ -75,10 +75,15 @@ static NSString * const reuseIdentifier = @"ARPhotoPickerGroupCell";
     
     if (self.autoPushToUserPhotoLibrary && self.smartAlbumFetchResult.count > 0) {
         PHAssetCollection *collection = [self.smartAlbumFetchResult objectAtIndex:0];
-        ARPhotoPickerAssetsController *assetsController = [[ARPhotoPickerAssetsController alloc] initWithAssetsCollection:collection];
-        assetsController.title = collection.localizedTitle;
-        [self.navigationController setViewControllers:@[self,assetsController]];
+        [self showAssetsViewControllerWithCollection:collection animated:NO];
     }
+}
+
+- (void)showAssetsViewControllerWithCollection:(PHAssetCollection *)collection animated:(BOOL)animated {
+    ARPhotoPickerAssetsController *assetsController = [[ARPhotoPickerAssetsController alloc] initWithAssetsCollection:collection];
+    assetsController.title = collection.localizedTitle;
+    assetsController.allowsMultipleSelection = self.allowsMultipleSelection;
+    [self.navigationController setViewControllers:@[self,assetsController] animated:animated];
 }
 
 #pragma mark - custom event methods
@@ -126,9 +131,7 @@ static NSString * const reuseIdentifier = @"ARPhotoPickerGroupCell";
     }else{
         collection = [self.anyAlbumFetchResult objectAtIndex:indexPath.row];
     }
-    ARPhotoPickerAssetsController *assetsController = [[ARPhotoPickerAssetsController alloc] initWithAssetsCollection:collection];
-    assetsController.title = collection.localizedTitle;
-    [self.navigationController pushViewController:assetsController animated:YES];
+    [self showAssetsViewControllerWithCollection:collection animated:YES];
 }
 
 @end

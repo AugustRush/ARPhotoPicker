@@ -38,7 +38,6 @@ static NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView"
     if (self) {
         _flowLayout = layout;
         _assetsCollection = collection;
-        _allowsMultipleSelection = YES;
     }
     return self;
 }

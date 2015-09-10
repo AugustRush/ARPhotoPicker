@@ -13,6 +13,7 @@
 @interface ARPhotoPickerController : UINavigationController
 
 @property (nonatomic, assign) BOOL autoPushToUserPhotoLibrary;// default is YES
+@property (nonatomic, assign) BOOL allowsMultipleSelection; // default is YES
 @property (nonatomic, weak) id<UINavigationControllerDelegate,ARPhotoPickerControllerDelegate> delegate;
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
