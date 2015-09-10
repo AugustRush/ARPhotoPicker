@@ -21,7 +21,7 @@
     self.countLabel.text = [NSString stringWithFormat:@"%lu",fetchResult.count];
     if (fetchResult.count > 0) {
         PHAsset *asset = [fetchResult firstObject];
-        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(70, 70) contentMode:PHImageContentModeAspectFill options:PHImageRequestOptionsVersionCurrent resultHandler:^(UIImage *result, NSDictionary *info) {
+        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(140, 140) contentMode:PHImageContentModeAspectFill options:PHImageRequestOptionsVersionCurrent resultHandler:^(UIImage *result, NSDictionary *info) {
             self.collectionImageView.image = result;
         }];
     }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		974B2D891BA12B1B00F42CCA /* ARPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2D881BA12B1B00F42CCA /* ARPhotoPickerController.m */; };
 		974B2D8C1BA12F9100F42CCA /* ARPhotoPickerAssetsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2D8B1BA12F9100F42CCA /* ARPhotoPickerAssetsController.m */; };
+		974B2D901BA132AE00F42CCA /* ARPhotoPickerAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2D8E1BA132AE00F42CCA /* ARPhotoPickerAssetCell.m */; };
+		974B2D911BA132AE00F42CCA /* ARPhotoPickerAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974B2D8F1BA132AE00F42CCA /* ARPhotoPickerAssetCell.xib */; };
 		97E5AD3A1BA01AF0003B43A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD391BA01AF0003B43A2 /* main.m */; };
 		97E5AD3D1BA01AF0003B43A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3C1BA01AF0003B43A2 /* AppDelegate.m */; };
 		97E5AD401BA01AF0003B43A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3F1BA01AF0003B43A2 /* ViewController.m */; };
@@ -36,6 +38,9 @@
 		974B2D881BA12B1B00F42CCA /* ARPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerController.m; sourceTree = "<group>"; };
 		974B2D8A1BA12F9100F42CCA /* ARPhotoPickerAssetsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPhotoPickerAssetsController.h; sourceTree = "<group>"; };
 		974B2D8B1BA12F9100F42CCA /* ARPhotoPickerAssetsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerAssetsController.m; sourceTree = "<group>"; };
+		974B2D8D1BA132AE00F42CCA /* ARPhotoPickerAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPhotoPickerAssetCell.h; sourceTree = "<group>"; };
+		974B2D8E1BA132AE00F42CCA /* ARPhotoPickerAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerAssetCell.m; sourceTree = "<group>"; };
+		974B2D8F1BA132AE00F42CCA /* ARPhotoPickerAssetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARPhotoPickerAssetCell.xib; sourceTree = "<group>"; };
 		97E5AD341BA01AF0003B43A2 /* ARPhotoPickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPhotoPickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E5AD381BA01AF0003B43A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97E5AD391BA01AF0003B43A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -148,6 +153,9 @@
 				97E5AD6A1BA044DB003B43A2 /* ARPhotoPickerGroupCell.xib */,
 				974B2D8A1BA12F9100F42CCA /* ARPhotoPickerAssetsController.h */,
 				974B2D8B1BA12F9100F42CCA /* ARPhotoPickerAssetsController.m */,
+				974B2D8D1BA132AE00F42CCA /* ARPhotoPickerAssetCell.h */,
+				974B2D8E1BA132AE00F42CCA /* ARPhotoPickerAssetCell.m */,
+				974B2D8F1BA132AE00F42CCA /* ARPhotoPickerAssetCell.xib */,
 			);
 			name = Source;
 			path = ../../Source;
@@ -234,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97E5AD431BA01AF0003B43A2 /* Main.storyboard in Resources */,
+				974B2D911BA132AE00F42CCA /* ARPhotoPickerAssetCell.xib in Resources */,
 				97E5AD481BA01AF0003B43A2 /* LaunchScreen.xib in Resources */,
 				97E5AD451BA01AF0003B43A2 /* Images.xcassets in Resources */,
 				97E5AD6C1BA044DB003B43A2 /* ARPhotoPickerGroupCell.xib in Resources */,
@@ -260,6 +269,7 @@
 				97E5AD3A1BA01AF0003B43A2 /* main.m in Sources */,
 				97E5AD611BA01BE5003B43A2 /* ARPhotoPickerGroupController.m in Sources */,
 				974B2D891BA12B1B00F42CCA /* ARPhotoPickerController.m in Sources */,
+				974B2D901BA132AE00F42CCA /* ARPhotoPickerAssetCell.m in Sources */,
 				974B2D8C1BA12F9100F42CCA /* ARPhotoPickerAssetsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
