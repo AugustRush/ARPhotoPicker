@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9cp-7i-bHf">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9cp-7i-bHf">
                         <rect key="frame" x="8" y="8" width="70" height="70"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="c54-9n-HBC"/>
@@ -30,7 +30,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwS-zS-t9r">
                         <rect key="frame" x="91" y="49" width="33" height="17"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -47,6 +47,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionImageView" destination="9cp-7i-bHf" id="e3n-1h-Iur"/>
+                <outlet property="countLabel" destination="IwS-zS-t9r" id="DmK-GH-Fzh"/>
+                <outlet property="titleLabel" destination="hHu-eH-6U8" id="XZd-j3-ljL"/>
             </connections>
             <point key="canvasLocation" x="428" y="446.5"/>
         </tableViewCell>

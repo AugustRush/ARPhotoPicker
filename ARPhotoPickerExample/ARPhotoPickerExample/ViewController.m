@@ -17,14 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)presentButtonClicked:(id)sender {
     
-    ARPhotoPickerGroupController *picker = [[ARPhotoPickerGroupController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:picker];
-    [self presentViewController:navigationController animated:YES completion:nil];
+    ARPhotoPickerController *picker = [[ARPhotoPickerController alloc] init];
+    [self presentViewController:picker animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

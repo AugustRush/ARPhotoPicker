@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 
 @interface ARPhotoPickerGroupController : UITableViewController
+
+@property (nonatomic, assign) PHAssetCollectionType collectionType;
+@property (nonatomic, assign) PHAssetCollectionSubtype collectionSubType;
 
 @end

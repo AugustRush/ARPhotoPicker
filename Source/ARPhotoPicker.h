@@ -9,6 +9,7 @@
 #ifndef ARPhotoPickerExample_ARPhotoPicker_h
 #define ARPhotoPickerExample_ARPhotoPicker_h
 
+#import "ARPhotoPickerController.h"
 #import "ARPhotoPickerGroupController.h"
 
 #endif

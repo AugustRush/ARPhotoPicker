@@ -7,7 +7,6 @@
 //
 
 #import "ARPhotoPickerGroupController.h"
-#import <Photos/Photos.h>
 #import "ARPhotoPickerGroupCell.h"
 
 @interface ARPhotoPickerGroupController ()<UITableViewDelegate,UITableViewDataSource>
@@ -25,7 +24,7 @@ static NSString *reuseIdentifier = @"ARPhotoPickerGroupCell";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        
+        [self _initConfigs];
     }
     return self;
 }
@@ -46,25 +45,34 @@ static NSString *reuseIdentifier = @"ARPhotoPickerGroupCell";
 
 #pragma mark - private methods
 
-- (void)_setUp {
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"ARPhotoPickerGroupCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-    
-    PHFetchResult *result = [PHAssetCollection fetchAssetCollectionsWithType:
-                             PHAssetCollectionTypeAlbum
-                             subtype:PHAssetCollectionSubtypeAny
-                             options:nil];
-    self.fetchResult = result;
+- (void)_initConfigs {
+#if TARGET_IPHONE_SIMULATOR
+    self.collectionType = PHAssetCollectionTypeSmartAlbum;
+    self.collectionSubType = PHAssetCollectionSubtypeSmartAlbumUserLibrary;
+#else
+    self.collectionType = PHAssetCollectionTypeAlbum;
+    self.collectionSubType = PHCollectionListSubtypeAny;
+#endif
 }
 
-- (void)setThumbnailWithCell:(ARPhotoPickerGroupCell *)cell assetsCollection:(PHAssetCollection *)collection {
-    PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:nil];
-    if (fetchResult.count > 0) {
-        PHAsset *asset = [fetchResult lastObject];
-        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(70, 70) contentMode:PHImageContentModeAspectFill options:PHImageRequestOptionsVersionCurrent resultHandler:^(UIImage *result, NSDictionary *info) {
-            cell.collectionImageView.image = result;
-        }];
-    }
+- (void)_setUp {
+    
+    self.navigationItem.title = @"My Photos";
+    PHFetchResult *result = [PHAssetCollection fetchAssetCollectionsWithType:
+                             self.collectionType
+                                                                     subtype:self.collectionSubType
+                                                                     options:nil];
+    self.fetchResult = result;
+    [self.tableView registerNib:[UINib nibWithNibName:@"ARPhotoPickerGroupCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+    
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelItemClicked:)];
+    self.navigationItem.leftBarButtonItem = cancelItem;
+}
+
+#pragma mark - custom event methods
+
+- (void)cancelItemClicked:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -81,7 +89,7 @@ static NSString *reuseIdentifier = @"ARPhotoPickerGroupCell";
     ARPhotoPickerGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     PHAssetCollection *collection = [self.fetchResult objectAtIndex:indexPath.row];
-    [self setThumbnailWithCell:cell assetsCollection:collection];
+    [cell configurationCellWithCollection:collection];
     return cell;
 }
 
