@@ -29,15 +29,16 @@ static NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView"
 - (instancetype)initWithAssetsCollection:(PHAssetCollection *)collection {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     CGFloat mainScreenWidth = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat width = mainScreenWidth / 4.0 - 2;
+    CGFloat width = mainScreenWidth / 4.0 - 1;
     layout.itemSize = CGSizeMake(width, width);
-    layout.minimumLineSpacing = 2;
-    layout.minimumInteritemSpacing = 2;
+    layout.minimumLineSpacing = 1;
+    layout.minimumInteritemSpacing = 1;
     layout.footerReferenceSize = CGSizeMake(mainScreenWidth, 44);
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
         _flowLayout = layout;
         _assetsCollection = collection;
+        _allowsMultipleSelection = YES;
     }
     return self;
 }
@@ -60,13 +61,28 @@ static NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView"
 
 - (void)_setUp {
 
-    self.fetchResult = [PHAsset fetchAssetsInAssetCollection:self.assetsCollection options:nil];
+    PHFetchOptions *fetchOptions = [PHFetchOptions new];
+    // predicate
+    fetchOptions.predicate = [NSPredicate predicateWithFormat: @"mediaType == %d", PHAssetMediaTypeImage];
+    // sortDescriptors
+    fetchOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+    self.fetchResult = [PHAsset fetchAssetsInAssetCollection:self.assetsCollection options:fetchOptions];
     
+    self.collectionView.allowsMultipleSelection = self.allowsMultipleSelection;
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0);
     
     [self.collectionView registerNib:[UINib nibWithNibName:reuseIdentifier bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:footerReuseIdemtifier bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerReuseIdemtifier];
+    
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelItemClicked:)];
+    [self.navigationItem setRightBarButtonItem:cancelItem];
+}
+
+#pragma mark - custom event methods
+
+- (void)cancelItemClicked:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -82,7 +98,7 @@ static NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView"
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ARPhotoPickerAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     PHAsset *asset = [self.fetchResult objectAtIndex:indexPath.row];
-    [cell configurationWithAsset:asset];
+    [cell configurationWithAsset:asset showCheckmark:self.collectionView.allowsMultipleSelection];
     return cell;
 }
 
@@ -98,7 +114,7 @@ static NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView"
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
+    
 }
 
 @end

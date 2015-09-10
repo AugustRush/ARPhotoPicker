@@ -15,7 +15,20 @@
 
 }
 
-- (void)configurationWithAsset:(PHAsset *)asset {
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    
+    if (selected) {
+        self.checkmarkImageView.image = [UIImage imageNamed:@"image_picker_selected"];
+    }else {
+        self.checkmarkImageView.image = nil;
+    }
+}
+
+#pragma mark - public methods
+
+- (void)configurationWithAsset:(PHAsset *)asset showCheckmark:(BOOL)show {
+    self.checkmarkImageView.hidden = !show;
     [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(160, 160) contentMode:PHImageContentModeAspectFill options:PHImageRequestOptionsVersionCurrent resultHandler:^(UIImage *result, NSDictionary *info) {
         self.imageView.image = result;
     }];

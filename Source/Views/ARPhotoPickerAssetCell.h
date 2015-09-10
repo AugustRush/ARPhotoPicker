@@ -13,7 +13,8 @@
 @interface ARPhotoPickerAssetCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *checkmarkImageView;
 
-- (void)configurationWithAsset:(PHAsset *)asset;
+- (void)configurationWithAsset:(PHAsset *)asset showCheckmark:(BOOL)show;
 
 @end

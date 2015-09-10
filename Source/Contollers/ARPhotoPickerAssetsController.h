@@ -12,6 +12,8 @@
 
 @interface ARPhotoPickerAssetsController : UICollectionViewController
 
+@property (nonatomic, assign) BOOL allowsMultipleSelection; // default is YES
+
 - (instancetype)initWithAssetsCollection:(PHAssetCollection *)collection NS_DESIGNATED_INITIALIZER;
 
 @end

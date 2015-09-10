@@ -15,17 +15,27 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oXJ-CJ-ipV">
                         <rect key="frame" x="0.0" y="0.0" width="136" height="128"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GBz-kl-ia6">
+                        <rect key="frame" x="114" y="6" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="Dth-Ya-nYN"/>
+                            <constraint firstAttribute="width" constant="16" id="EXZ-r1-95a"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="oXJ-CJ-ipV" secondAttribute="trailing" id="5jx-ZP-HU9"/>
+                <constraint firstAttribute="trailing" secondItem="GBz-kl-ia6" secondAttribute="trailing" constant="6" id="7FL-8Q-zM1"/>
                 <constraint firstItem="oXJ-CJ-ipV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Q6x-M4-HcJ"/>
+                <constraint firstItem="GBz-kl-ia6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="6" id="TJ8-r8-Tyn"/>
                 <constraint firstItem="oXJ-CJ-ipV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bmd-vq-8Ua"/>
                 <constraint firstAttribute="bottom" secondItem="oXJ-CJ-ipV" secondAttribute="bottom" id="uxm-gm-TDZ"/>
             </constraints>
             <size key="customSize" width="136" height="128"/>
             <connections>
+                <outlet property="checkmarkImageView" destination="GBz-kl-ia6" id="IAd-kb-4CU"/>
                 <outlet property="imageView" destination="oXJ-CJ-ipV" id="0av-0F-0xG"/>
             </connections>
             <point key="canvasLocation" x="355" y="389"/>

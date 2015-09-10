@@ -11,5 +11,6 @@
 
 #import "ARPhotoPickerController.h"
 #import "ARPhotoPickerGroupController.h"
+#import "ARPhotoPickerAssetsController.h"
 
 #endif

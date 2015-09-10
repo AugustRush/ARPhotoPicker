@@ -72,6 +72,13 @@ static NSString * const reuseIdentifier = @"ARPhotoPickerGroupCell";
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelItemClicked:)];
     self.navigationItem.leftBarButtonItem = cancelItem;
+    
+    if (self.autoPushToUserPhotoLibrary && self.smartAlbumFetchResult.count > 0) {
+        PHAssetCollection *collection = [self.smartAlbumFetchResult objectAtIndex:0];
+        ARPhotoPickerAssetsController *assetsController = [[ARPhotoPickerAssetsController alloc] initWithAssetsCollection:collection];
+        assetsController.title = collection.localizedTitle;
+        [self.navigationController setViewControllers:@[self,assetsController]];
+    }
 }
 
 #pragma mark - custom event methods

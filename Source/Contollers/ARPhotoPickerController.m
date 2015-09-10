@@ -14,13 +14,17 @@
 @end
 
 @implementation ARPhotoPickerController
+@dynamic delegate;
 
 #pragma mark - lifeCycle methods
 
 - (instancetype)init {
-    self = [super initWithRootViewController:[[ARPhotoPickerGroupController alloc] init]];
+    ARPhotoPickerGroupController *groupController = [[ARPhotoPickerGroupController alloc] init];
+    
+    self = [super initWithRootViewController:groupController];
     if (self) {
-        
+        _autoPushToUserPhotoLibrary = YES;
+        groupController.autoPushToUserPhotoLibrary = _autoPushToUserPhotoLibrary;
     }
     return self;
 }

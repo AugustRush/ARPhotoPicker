@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ARPhotoPickerControllerDelegate;
+
 @interface ARPhotoPickerController : UINavigationController
 
+@property (nonatomic, assign) BOOL autoPushToUserPhotoLibrary;// default is YES
+@property (nonatomic, weak) id<UINavigationControllerDelegate,ARPhotoPickerControllerDelegate> delegate;
+
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
+
+@end
+
+
+@protocol ARPhotoPickerControllerDelegate <NSObject>
 
 @end

@@ -16,6 +16,7 @@
 		974B2DAF1BA14D8900F42CCA /* ARPhotoPickerAssetsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DA51BA14D8900F42CCA /* ARPhotoPickerAssetsFooterView.xib */; };
 		974B2DB01BA14D8900F42CCA /* ARPhotoPickerGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DA71BA14D8900F42CCA /* ARPhotoPickerGroupCell.m */; };
 		974B2DB11BA14D8900F42CCA /* ARPhotoPickerGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DA81BA14D8900F42CCA /* ARPhotoPickerGroupCell.xib */; };
+		974B2DB31BA14E2300F42CCA /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DB21BA14E2300F42CCA /* Icons.xcassets */; };
 		97E5AD3A1BA01AF0003B43A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD391BA01AF0003B43A2 /* main.m */; };
 		97E5AD3D1BA01AF0003B43A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3C1BA01AF0003B43A2 /* AppDelegate.m */; };
 		97E5AD401BA01AF0003B43A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3F1BA01AF0003B43A2 /* ViewController.m */; };
@@ -51,6 +52,7 @@
 		974B2DA61BA14D8900F42CCA /* ARPhotoPickerGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPhotoPickerGroupCell.h; sourceTree = "<group>"; };
 		974B2DA71BA14D8900F42CCA /* ARPhotoPickerGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerGroupCell.m; sourceTree = "<group>"; };
 		974B2DA81BA14D8900F42CCA /* ARPhotoPickerGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARPhotoPickerGroupCell.xib; sourceTree = "<group>"; };
+		974B2DB21BA14E2300F42CCA /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		97E5AD341BA01AF0003B43A2 /* ARPhotoPickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPhotoPickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E5AD381BA01AF0003B43A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97E5AD391BA01AF0003B43A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -88,12 +90,12 @@
 		974B2D971BA14D8900F42CCA /* Contollers */ = {
 			isa = PBXGroup;
 			children = (
-				974B2D981BA14D8900F42CCA /* ARPhotoPickerAssetsController.h */,
-				974B2D991BA14D8900F42CCA /* ARPhotoPickerAssetsController.m */,
 				974B2D9A1BA14D8900F42CCA /* ARPhotoPickerController.h */,
 				974B2D9B1BA14D8900F42CCA /* ARPhotoPickerController.m */,
 				974B2D9C1BA14D8900F42CCA /* ARPhotoPickerGroupController.h */,
 				974B2D9D1BA14D8900F42CCA /* ARPhotoPickerGroupController.m */,
+				974B2D981BA14D8900F42CCA /* ARPhotoPickerAssetsController.h */,
+				974B2D991BA14D8900F42CCA /* ARPhotoPickerAssetsController.m */,
 			);
 			path = Contollers;
 			sourceTree = "<group>";
@@ -101,6 +103,7 @@
 		974B2D9E1BA14D8900F42CCA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				974B2DB21BA14E2300F42CCA /* Icons.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			files = (
 				97E5AD431BA01AF0003B43A2 /* Main.storyboard in Resources */,
 				97E5AD481BA01AF0003B43A2 /* LaunchScreen.xib in Resources */,
+				974B2DB31BA14E2300F42CCA /* Icons.xcassets in Resources */,
 				974B2DAD1BA14D8900F42CCA /* ARPhotoPickerAssetCell.xib in Resources */,
 				97E5AD451BA01AF0003B43A2 /* Images.xcassets in Resources */,
 				974B2DAF1BA14D8900F42CCA /* ARPhotoPickerAssetsFooterView.xib in Resources */,
