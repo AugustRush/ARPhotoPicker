@@ -17,6 +17,7 @@
 		974B2DB01BA14D8900F42CCA /* ARPhotoPickerGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DA71BA14D8900F42CCA /* ARPhotoPickerGroupCell.m */; };
 		974B2DB11BA14D8900F42CCA /* ARPhotoPickerGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DA81BA14D8900F42CCA /* ARPhotoPickerGroupCell.xib */; };
 		974B2DB31BA14E2300F42CCA /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DB21BA14E2300F42CCA /* Icons.xcassets */; };
+		974B2DB71BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DB61BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m */; };
 		97E5AD3A1BA01AF0003B43A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD391BA01AF0003B43A2 /* main.m */; };
 		97E5AD3D1BA01AF0003B43A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3C1BA01AF0003B43A2 /* AppDelegate.m */; };
 		97E5AD401BA01AF0003B43A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3F1BA01AF0003B43A2 /* ViewController.m */; };
@@ -53,6 +54,8 @@
 		974B2DA71BA14D8900F42CCA /* ARPhotoPickerGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerGroupCell.m; sourceTree = "<group>"; };
 		974B2DA81BA14D8900F42CCA /* ARPhotoPickerGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARPhotoPickerGroupCell.xib; sourceTree = "<group>"; };
 		974B2DB21BA14E2300F42CCA /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		974B2DB51BA1763C00F42CCA /* PHAsset+ARPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+ARPhotoPicker.h"; sourceTree = "<group>"; };
+		974B2DB61BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+ARPhotoPicker.m"; sourceTree = "<group>"; };
 		97E5AD341BA01AF0003B43A2 /* ARPhotoPickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPhotoPickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E5AD381BA01AF0003B43A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97E5AD391BA01AF0003B43A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -124,6 +127,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		974B2DB41BA1761500F42CCA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				974B2DB51BA1763C00F42CCA /* PHAsset+ARPhotoPicker.h */,
+				974B2DB61BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		97E5AD2B1BA01AF0003B43A2 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				97E5AD5E1BA01B90003B43A2 /* ARPhotoPicker.h */,
+				974B2DB41BA1761500F42CCA /* Category */,
 				974B2D971BA14D8900F42CCA /* Contollers */,
 				974B2D9E1BA14D8900F42CCA /* Resources */,
 				974B2D9F1BA14D8900F42CCA /* Views */,
@@ -308,6 +321,7 @@
 				974B2DAA1BA14D8900F42CCA /* ARPhotoPickerController.m in Sources */,
 				97E5AD3A1BA01AF0003B43A2 /* main.m in Sources */,
 				974B2DAC1BA14D8900F42CCA /* ARPhotoPickerAssetCell.m in Sources */,
+				974B2DB71BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m in Sources */,
 				974B2DB01BA14D8900F42CCA /* ARPhotoPickerGroupCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

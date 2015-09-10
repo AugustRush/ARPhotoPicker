@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AtP-ls-Yka">
-                                <rect key="frame" x="229" y="285" width="142" height="30"/>
+                                <rect key="frame" x="229" y="420" width="142" height="30"/>
                                 <state key="normal" title="present photo picker">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -25,13 +25,25 @@
                                     <action selector="presentButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cRt-rJ-S1V"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gK2-Zg-dXq">
+                                <rect key="frame" x="180" y="193" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Mlr-fe-rOj"/>
+                                    <constraint firstAttribute="width" constant="240" id="eR0-nP-YDb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="AtP-ls-Yka" secondAttribute="bottom" constant="150" id="5VW-ud-MBq"/>
                             <constraint firstAttribute="centerX" secondItem="AtP-ls-Yka" secondAttribute="centerX" id="VQu-RH-s8O"/>
-                            <constraint firstAttribute="centerY" secondItem="AtP-ls-Yka" secondAttribute="centerY" id="uQe-dX-aYn"/>
+                            <constraint firstAttribute="centerX" secondItem="gK2-Zg-dXq" secondAttribute="centerX" id="Yzt-Z3-U7V"/>
+                            <constraint firstItem="AtP-ls-Yka" firstAttribute="top" secondItem="gK2-Zg-dXq" secondAttribute="bottom" constant="99" id="hh3-Sh-69o"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="gK2-Zg-dXq" id="QNX-BC-Jtj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

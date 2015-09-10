@@ -11,6 +11,12 @@
 #import "ARPhotoPickerAssetsFooterView.h"
 #import <Photos/Photos.h>
 
+NSString * const reuseIdentifier = @"ARPhotoPickerAssetCell";
+NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView";
+
+NSString * const ARPhotoPickerAssetsControllerDismissNotification = @"ARPhotoPickerAssetsControllerDismissNotification";
+NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhotoPickerAssetsControllerSelectAssetNotification";
+
 @interface ARPhotoPickerAssetsController ()
 
 @property (nonatomic, weak) UICollectionViewFlowLayout *flowLayout;
@@ -20,9 +26,6 @@
 @end
 
 @implementation ARPhotoPickerAssetsController
-
-static NSString * const reuseIdentifier = @"ARPhotoPickerAssetCell";
-static NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView";
 
 #pragma mark - lifeCycle methods
 
@@ -81,7 +84,9 @@ static NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView"
 #pragma mark - custom event methods
 
 - (void)cancelItemClicked:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:ARPhotoPickerAssetsControllerDismissNotification object:nil];
+    }];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -113,7 +118,8 @@ static NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView"
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    PHAsset *asset = [self.fetchResult objectAtIndex:indexPath.row];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ARPhotoPickerAssetsControllerSelectAssetNotification object:asset];
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+FOUNDATION_EXPORT NSString * const ARPhotoPickerAssetsControllerDismissNotification;
+FOUNDATION_EXPORT NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification;
+
 @class PHAssetCollection;
 
 @interface ARPhotoPickerAssetsController : UICollectionViewController

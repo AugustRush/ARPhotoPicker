@@ -9,7 +9,9 @@
 #import "ARPhotoPickerController.h"
 #import "ARPhotoPickerGroupController.h"
 
-@interface ARPhotoPickerController ()
+NSString *const ARPhotoPickerControllerOriginalImageKey = @"ARPhotoPickerControllerOriginalImageKey";
+
+@interface ARPhotoPickerController ()<ARPhotoPickerGroupControllerDelegate>
 
 @end
 
@@ -27,6 +29,7 @@
         _allowsMultipleSelection = YES;
         groupController.autoPushToUserPhotoLibrary = _autoPushToUserPhotoLibrary;
         groupController.allowsMultipleSelection = _allowsMultipleSelection;
+        groupController.delegate = self;
     }
     return self;
 }
@@ -38,7 +41,8 @@
 }
 
 - (void)dealloc {
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ARPhotoPickerAssetsControllerDismissNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ARPhotoPickerAssetsControllerSelectAssetNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +52,37 @@
 #pragma mark - private methods
 
 - (void)_setUp {
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(assetsControllerDidDismissed:)
+                                                 name:ARPhotoPickerAssetsControllerDismissNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(assetsControllerDidSelectAsset:)
+                                                 name:ARPhotoPickerAssetsControllerSelectAssetNotification
+                                               object:nil];
+}
+
+#pragma mark - ARPhotoPickerGroupControllerDelegate methods
+
+- (void)photoPickerGroupControllerDidCancel:(ARPhotoPickerGroupController *)controller {
+    if ([self.delegate respondsToSelector:@selector(photoPickerControllerDidCancel:)]) {
+        [self.delegate photoPickerControllerDidCancel:self];
+    }
+}
+
+#pragma mark - asset controller notification methods
+
+- (void)assetsControllerDidDismissed:(NSNotification *)notification {
+    if ([self.delegate respondsToSelector:@selector(photoPickerControllerDidCancel:)]) {
+        [self.delegate photoPickerControllerDidCancel:self];
+    }
+}
+
+- (void)assetsControllerDidSelectAsset:(NSNotification *)notification {
+    PHAsset *asset = notification.object;
+    if ([self.delegate respondsToSelector:@selector(photoPickerController:didPickingMediaWithAsset:)]) {
+        [self.delegate photoPickerController:self didPickingMediaWithAsset:asset];
+    }
 }
 
 @end

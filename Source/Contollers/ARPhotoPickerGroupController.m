@@ -89,7 +89,11 @@ static NSString * const reuseIdentifier = @"ARPhotoPickerGroupCell";
 #pragma mark - custom event methods
 
 - (void)cancelItemClicked:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if ([self.delegate respondsToSelector:@selector(photoPickerGroupControllerDidCancel:)]) {
+            [self.delegate photoPickerGroupControllerDidCancel:self];
+        }
+    }];
 }
 
 #pragma mark - UITableViewDataSource methods
