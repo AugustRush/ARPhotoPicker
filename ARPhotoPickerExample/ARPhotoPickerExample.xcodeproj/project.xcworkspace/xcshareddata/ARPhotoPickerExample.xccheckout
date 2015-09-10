@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>820C3A54-FA0D-4FEA-8774-AF3AF2392171</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>ARPhotoPickerExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>C1935747435D386D12F7B35A4E1CD2134844C2AE</key>
 		<string>https://github.com/AugustRush/ARPhotoPicker.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ARPhotoPickerExample/ARPhotoPickerExample.xcodeproj/project.xcworkspace</string>
+	<string>ARPhotoPickerExample/ARPhotoPickerExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C1935747435D386D12F7B35A4E1CD2134844C2AE</key>

@@ -15,7 +15,6 @@
 		97E5AD481BA01AF0003B43A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97E5AD461BA01AF0003B43A2 /* LaunchScreen.xib */; };
 		97E5AD541BA01AF0003B43A2 /* ARPhotoPickerExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD531BA01AF0003B43A2 /* ARPhotoPickerExampleTests.m */; };
 		97E5AD611BA01BE5003B43A2 /* ARPhotoPickerGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD601BA01BE5003B43A2 /* ARPhotoPickerGroupController.m */; };
-		97E5AD651BA01DED003B43A2 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E5AD641BA01DED003B43A2 /* AssetsLibrary.framework */; };
 		97E5AD6B1BA044DB003B43A2 /* ARPhotoPickerGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD691BA044DB003B43A2 /* ARPhotoPickerGroupCell.m */; };
 		97E5AD6C1BA044DB003B43A2 /* ARPhotoPickerGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97E5AD6A1BA044DB003B43A2 /* ARPhotoPickerGroupCell.xib */; };
 /* End PBXBuildFile section */
@@ -47,7 +46,6 @@
 		97E5AD5E1BA01B90003B43A2 /* ARPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPhotoPicker.h; sourceTree = "<group>"; };
 		97E5AD5F1BA01BE5003B43A2 /* ARPhotoPickerGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPhotoPickerGroupController.h; sourceTree = "<group>"; };
 		97E5AD601BA01BE5003B43A2 /* ARPhotoPickerGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerGroupController.m; sourceTree = "<group>"; };
-		97E5AD641BA01DED003B43A2 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		97E5AD681BA044DB003B43A2 /* ARPhotoPickerGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPhotoPickerGroupCell.h; sourceTree = "<group>"; };
 		97E5AD691BA044DB003B43A2 /* ARPhotoPickerGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerGroupCell.m; sourceTree = "<group>"; };
 		97E5AD6A1BA044DB003B43A2 /* ARPhotoPickerGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARPhotoPickerGroupCell.xib; sourceTree = "<group>"; };
@@ -58,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97E5AD651BA01DED003B43A2 /* AssetsLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +72,6 @@
 		97E5AD2B1BA01AF0003B43A2 = {
 			isa = PBXGroup;
 			children = (
-				97E5AD641BA01DED003B43A2 /* AssetsLibrary.framework */,
 				97E5AD361BA01AF0003B43A2 /* ARPhotoPickerExample */,
 				97E5AD501BA01AF0003B43A2 /* ARPhotoPickerExampleTests */,
 				97E5AD351BA01AF0003B43A2 /* Products */,
@@ -447,6 +443,7 @@
 				97E5AD591BA01AF0003B43A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		97E5AD5A1BA01AF0003B43A2 /* Build configuration list for PBXNativeTarget "ARPhotoPickerExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +452,7 @@
 				97E5AD5C1BA01AF0003B43A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
