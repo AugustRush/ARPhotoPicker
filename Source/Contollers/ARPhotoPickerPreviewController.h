@@ -10,4 +10,8 @@
 
 @interface ARPhotoPickerPreviewController : UIPageViewController
 
+- (instancetype)initWithAssets:(NSArray *)assets;
+
+- (instancetype)init NS_UNAVAILABLE;
+
 @end

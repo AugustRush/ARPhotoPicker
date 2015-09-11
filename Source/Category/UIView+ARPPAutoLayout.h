@@ -8,17 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_OPTIONS(NSUInteger, UIViewEdgeTypeOptions) {
-    UIViewEdgeTypeOptionsLeft = 1 << 0,
-    UIViewEdgeTypeOptionsRight = 1 << 1,
-    UIViewEdgeTypeOptionsTop = 1 << 2,
-    UIViewEdgeTypeOptionsBottom = 1 << 3
+typedef NS_OPTIONS(NSUInteger, ARViewEdgeTypeOptions) {
+    ARViewEdgeTypeOptionsLeft = 1 << 0,
+    ARViewEdgeTypeOptionsRight = 1 << 1,
+    ARViewEdgeTypeOptionsTop = 1 << 2,
+    ARViewEdgeTypeOptionsBottom = 1 << 3
 };
 
 @interface UIView (ARPPAutoLayout)
 
-- (void)autoAlignEdgesToSuperViewWithOptions:(UIViewEdgeTypeOptions)options;
-- (void)autoAlignEdgesToSuperViewWithOptions:(UIViewEdgeTypeOptions)options margin:(CGFloat)margin;
+// for superView
+- (void)autoAlignEdgesToSuperViewWithOptions:(ARViewEdgeTypeOptions)options;
+- (void)autoAlignEdgesToSuperViewWithOptions:(ARViewEdgeTypeOptions)options margin:(CGFloat)margin;
 
 - (void)autoConstraintToHeight:(CGFloat)height;
 - (void)autoConstraintToWidth:(CGFloat)width;

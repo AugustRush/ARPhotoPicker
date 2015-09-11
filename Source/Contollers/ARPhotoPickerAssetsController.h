@@ -16,6 +16,7 @@ FOUNDATION_EXPORT NSString * const ARPhotoPickerAssetsControllerSelectAssetNotif
 @interface ARPhotoPickerAssetsController : UICollectionViewController
 
 @property (nonatomic, assign) BOOL allowsMultipleSelection; // default is YES
+@property (nonatomic, assign) NSUInteger canSelectPhotosMaxCount; // default is 9
 
 - (instancetype)initWithAssetsCollection:(PHAssetCollection *)collection NS_DESIGNATED_INITIALIZER;
 

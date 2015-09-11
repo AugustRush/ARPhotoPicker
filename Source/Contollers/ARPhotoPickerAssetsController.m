@@ -12,6 +12,8 @@
 #import <Photos/Photos.h>
 #import "ARPhotoPickerMacros.h"
 #import "UIView+ARPPAutoLayout.h"
+#import "ARPhotoPickerAssetsToolBar.h"
+#import "ARPhotoPickerPreviewController.h"
 
 NSString * const reuseIdentifier = @"ARPhotoPickerAssetCell";
 NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView";
@@ -24,6 +26,7 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
 @property (nonatomic, weak) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) PHAssetCollection *assetsCollection;
 @property (nonatomic, strong) PHFetchResult *fetchResult;
+@property (nonatomic, strong) ARPhotoPickerAssetsToolBar *bottomBar;
 
 @end
 
@@ -43,6 +46,7 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
     if (self) {
         _flowLayout = layout;
         _assetsCollection = collection;
+        _canSelectPhotosMaxCount = 9;
     }
     return self;
 }
@@ -79,24 +83,16 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
     [self.collectionView registerNib:[UINib nibWithNibName:reuseIdentifier bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     [self.collectionView registerNib:[UINib nibWithNibName:footerReuseIdemtifier bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerReuseIdemtifier];
     
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelItemClicked:)];
-    [self.navigationItem setRightBarButtonItem:cancelItem];
-    
-    UIToolbar *bottomBar = [[UIToolbar alloc] init];
-    bottomBar.tintColor = [UIColor colorWithWhite:51/255.0 alpha:1];
-    bottomBar.barTintColor = [UIColor colorWithWhite:244/255.0 alpha:1];
-    [self.view addSubview:bottomBar];
-    
-    UIBarButtonItem *previewItem = [[UIBarButtonItem alloc] initWithTitle:ARPPLocalString(@"preview") style:UIBarButtonItemStylePlain target:self action:@selector(previewItemClicked:)];
-    UIBarButtonItem *flexItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *sendItem = [[UIBarButtonItem alloc] initWithTitle:ARPPLocalString(@"send") style:UIBarButtonItemStylePlain target:self action:@selector(sendItemClicked:)];
-    
-    [bottomBar setItems:@[previewItem,flexItem,sendItem]];
+    _bottomBar = [[[NSBundle mainBundle] loadNibNamed:@"ARPhotoPickerAssetsToolBar" owner:nil options:nil] lastObject];
+    [_bottomBar.leftButton setTitle:ARPPLocalString(@"preview") forState:UIControlStateNormal];
+    [_bottomBar.rightButton setTitle:ARPPLocalString(@"send") forState:UIControlStateNormal];
+    [_bottomBar.leftButton addTarget:self action:@selector(previewItemClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomBar.rightButton addTarget:self action:@selector(sendItemClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_bottomBar];
     
     //layout
-    
-    [bottomBar autoAlignEdgesToSuperViewWithOptions:UIViewEdgeTypeOptionsLeft|UIViewEdgeTypeOptionsRight|UIViewEdgeTypeOptionsBottom];
-    [bottomBar autoConstraintToHeight:44];
+    [_bottomBar autoAlignEdgesToSuperViewWithOptions:ARViewEdgeTypeOptionsLeft|ARViewEdgeTypeOptionsRight|ARViewEdgeTypeOptionsBottom];
+    [_bottomBar autoConstraintToHeight:44];
 }
 
 #pragma mark - custom event methods
@@ -108,7 +104,18 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
 }
 
 - (void)previewItemClicked:(id)sender {
-
+    
+    NSMutableArray *assets = [NSMutableArray array];
+    NSArray *indexPaths = [self.collectionView indexPathsForSelectedItems];
+    [indexPaths enumerateObjectsUsingBlock:^(NSIndexPath *obj, NSUInteger idx, BOOL *stop) {
+        if (obj.row - 1 < self.fetchResult.count) {
+            PHAsset *asset = [self.fetchResult objectAtIndex:obj.row - 1];
+            [assets addObject:asset];
+        }
+    }];
+    
+    ARPhotoPickerPreviewController *previewController = [[ARPhotoPickerPreviewController alloc] initWithAssets:assets];
+    [self.navigationController showViewController:previewController sender:self];
 }
 
 - (void)sendItemClicked:(id)sender {
@@ -150,12 +157,24 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row > 0) {
-        PHAsset *asset = [self.fetchResult objectAtIndex:indexPath.row - 1];
-        [[NSNotificationCenter defaultCenter] postNotificationName:ARPhotoPickerAssetsControllerSelectAssetNotification object:asset];
+        
+        NSUInteger hasSelectCount = [[self.collectionView indexPathsForSelectedItems] count];
+        if (hasSelectCount > self.canSelectPhotosMaxCount) {
+            [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+        }else{
+            [self.bottomBar setNumber:hasSelectCount];
+            PHAsset *asset = [self.fetchResult objectAtIndex:indexPath.row - 1];
+            [[NSNotificationCenter defaultCenter] postNotificationName:ARPhotoPickerAssetsControllerSelectAssetNotification object:asset];
+        }
     }else{
     //take photo
         
     }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger hasSelectCount = [[self.collectionView indexPathsForSelectedItems] count];
+    [self.bottomBar setNumber:hasSelectCount];
 }
 
 @end

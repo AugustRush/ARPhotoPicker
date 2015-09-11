@@ -21,6 +21,9 @@
 		974B2DBA1BA2759900F42CCA /* ARPhotoPicker.strings in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DBC1BA2759900F42CCA /* ARPhotoPicker.strings */; };
 		974B2DC51BA2824E00F42CCA /* ARPhotoPickerPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DC41BA2824E00F42CCA /* ARPhotoPickerPreviewController.m */; };
 		974B2DC81BA282E400F42CCA /* UIView+ARPPAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DC71BA282E400F42CCA /* UIView+ARPPAutoLayout.m */; };
+		974B2DCE1BA2B25000F42CCA /* ARPhotoPickerAssetsToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DCD1BA2B25000F42CCA /* ARPhotoPickerAssetsToolBar.m */; };
+		974B2DD01BA2B26400F42CCA /* ARPhotoPickerAssetsToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DCF1BA2B26400F42CCA /* ARPhotoPickerAssetsToolBar.xib */; };
+		974B2DD31BA2C4F500F42CCA /* ARPhotoPickerAssetItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DD21BA2C4F500F42CCA /* ARPhotoPickerAssetItemViewController.m */; };
 		97E5AD3A1BA01AF0003B43A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD391BA01AF0003B43A2 /* main.m */; };
 		97E5AD3D1BA01AF0003B43A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3C1BA01AF0003B43A2 /* AppDelegate.m */; };
 		97E5AD401BA01AF0003B43A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3F1BA01AF0003B43A2 /* ViewController.m */; };
@@ -68,6 +71,11 @@
 		974B2DC41BA2824E00F42CCA /* ARPhotoPickerPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerPreviewController.m; sourceTree = "<group>"; };
 		974B2DC61BA282E400F42CCA /* UIView+ARPPAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ARPPAutoLayout.h"; sourceTree = "<group>"; };
 		974B2DC71BA282E400F42CCA /* UIView+ARPPAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ARPPAutoLayout.m"; sourceTree = "<group>"; };
+		974B2DCC1BA2B25000F42CCA /* ARPhotoPickerAssetsToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPhotoPickerAssetsToolBar.h; sourceTree = "<group>"; };
+		974B2DCD1BA2B25000F42CCA /* ARPhotoPickerAssetsToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerAssetsToolBar.m; sourceTree = "<group>"; };
+		974B2DCF1BA2B26400F42CCA /* ARPhotoPickerAssetsToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARPhotoPickerAssetsToolBar.xib; sourceTree = "<group>"; };
+		974B2DD11BA2C4F500F42CCA /* ARPhotoPickerAssetItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPhotoPickerAssetItemViewController.h; sourceTree = "<group>"; };
+		974B2DD21BA2C4F500F42CCA /* ARPhotoPickerAssetItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerAssetItemViewController.m; sourceTree = "<group>"; };
 		97E5AD341BA01AF0003B43A2 /* ARPhotoPickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPhotoPickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E5AD381BA01AF0003B43A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97E5AD391BA01AF0003B43A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -113,6 +121,8 @@
 				974B2D991BA14D8900F42CCA /* ARPhotoPickerAssetsController.m */,
 				974B2DC31BA2824E00F42CCA /* ARPhotoPickerPreviewController.h */,
 				974B2DC41BA2824E00F42CCA /* ARPhotoPickerPreviewController.m */,
+				974B2DD11BA2C4F500F42CCA /* ARPhotoPickerAssetItemViewController.h */,
+				974B2DD21BA2C4F500F42CCA /* ARPhotoPickerAssetItemViewController.m */,
 			);
 			path = Contollers;
 			sourceTree = "<group>";
@@ -138,6 +148,9 @@
 				974B2DA61BA14D8900F42CCA /* ARPhotoPickerGroupCell.h */,
 				974B2DA71BA14D8900F42CCA /* ARPhotoPickerGroupCell.m */,
 				974B2DA81BA14D8900F42CCA /* ARPhotoPickerGroupCell.xib */,
+				974B2DCC1BA2B25000F42CCA /* ARPhotoPickerAssetsToolBar.h */,
+				974B2DCD1BA2B25000F42CCA /* ARPhotoPickerAssetsToolBar.m */,
+				974B2DCF1BA2B26400F42CCA /* ARPhotoPickerAssetsToolBar.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +325,7 @@
 				97E5AD431BA01AF0003B43A2 /* Main.storyboard in Resources */,
 				97E5AD481BA01AF0003B43A2 /* LaunchScreen.xib in Resources */,
 				974B2DB31BA14E2300F42CCA /* Icons.xcassets in Resources */,
+				974B2DD01BA2B26400F42CCA /* ARPhotoPickerAssetsToolBar.xib in Resources */,
 				974B2DAD1BA14D8900F42CCA /* ARPhotoPickerAssetCell.xib in Resources */,
 				97E5AD451BA01AF0003B43A2 /* Images.xcassets in Resources */,
 				974B2DAF1BA14D8900F42CCA /* ARPhotoPickerAssetsFooterView.xib in Resources */,
@@ -333,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				974B2DCE1BA2B25000F42CCA /* ARPhotoPickerAssetsToolBar.m in Sources */,
 				974B2DA91BA14D8900F42CCA /* ARPhotoPickerAssetsController.m in Sources */,
 				97E5AD401BA01AF0003B43A2 /* ViewController.m in Sources */,
 				974B2DAE1BA14D8900F42CCA /* ARPhotoPickerAssetsFooterView.m in Sources */,
@@ -340,6 +355,7 @@
 				974B2DAB1BA14D8900F42CCA /* ARPhotoPickerGroupController.m in Sources */,
 				974B2DAA1BA14D8900F42CCA /* ARPhotoPickerController.m in Sources */,
 				97E5AD3A1BA01AF0003B43A2 /* main.m in Sources */,
+				974B2DD31BA2C4F500F42CCA /* ARPhotoPickerAssetItemViewController.m in Sources */,
 				974B2DC51BA2824E00F42CCA /* ARPhotoPickerPreviewController.m in Sources */,
 				974B2DC81BA282E400F42CCA /* UIView+ARPPAutoLayout.m in Sources */,
 				974B2DAC1BA14D8900F42CCA /* ARPhotoPickerAssetCell.m in Sources */,

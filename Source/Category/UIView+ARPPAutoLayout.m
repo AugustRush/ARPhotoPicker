@@ -10,11 +10,11 @@
 
 @implementation UIView (ARPPAutoLayout)
 
-- (void)autoAlignEdgesToSuperViewWithOptions:(UIViewEdgeTypeOptions)options {
+- (void)autoAlignEdgesToSuperViewWithOptions:(ARViewEdgeTypeOptions)options {
     [self autoAlignEdgesToSuperViewWithOptions:options margin:0];
 }
 
-- (void)autoAlignEdgesToSuperViewWithOptions:(UIViewEdgeTypeOptions)options margin:(CGFloat)margin {
+- (void)autoAlignEdgesToSuperViewWithOptions:(ARViewEdgeTypeOptions)options margin:(CGFloat)margin {
     NSAssert(self.superview != nil, @"superView should not be nil");
     self.translatesAutoresizingMaskIntoConstraints = NO;
     UIView *superView = self.superview;
