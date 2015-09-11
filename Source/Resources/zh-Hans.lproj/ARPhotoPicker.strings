@@ -1,0 +1,13 @@
+/* 
+  Localized.strings
+  ARPhotoPickerExample
+
+  Created by August on 15/9/11.
+  Copyright (c) 2015年 August. All rights reserved.
+*/
+
+"My Photos" = "相册";
+"preview" = "预览";
+"send" = "发送";
+"Photo" = "照片";
+"Photos" = "照片";

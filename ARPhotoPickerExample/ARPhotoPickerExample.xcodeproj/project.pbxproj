@@ -18,6 +18,9 @@
 		974B2DB11BA14D8900F42CCA /* ARPhotoPickerGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DA81BA14D8900F42CCA /* ARPhotoPickerGroupCell.xib */; };
 		974B2DB31BA14E2300F42CCA /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DB21BA14E2300F42CCA /* Icons.xcassets */; };
 		974B2DB71BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DB61BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m */; };
+		974B2DBA1BA2759900F42CCA /* ARPhotoPicker.strings in Resources */ = {isa = PBXBuildFile; fileRef = 974B2DBC1BA2759900F42CCA /* ARPhotoPicker.strings */; };
+		974B2DC51BA2824E00F42CCA /* ARPhotoPickerPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DC41BA2824E00F42CCA /* ARPhotoPickerPreviewController.m */; };
+		974B2DC81BA282E400F42CCA /* UIView+ARPPAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 974B2DC71BA282E400F42CCA /* UIView+ARPPAutoLayout.m */; };
 		97E5AD3A1BA01AF0003B43A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD391BA01AF0003B43A2 /* main.m */; };
 		97E5AD3D1BA01AF0003B43A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3C1BA01AF0003B43A2 /* AppDelegate.m */; };
 		97E5AD401BA01AF0003B43A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E5AD3F1BA01AF0003B43A2 /* ViewController.m */; };
@@ -56,6 +59,15 @@
 		974B2DB21BA14E2300F42CCA /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		974B2DB51BA1763C00F42CCA /* PHAsset+ARPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+ARPhotoPicker.h"; sourceTree = "<group>"; };
 		974B2DB61BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+ARPhotoPicker.m"; sourceTree = "<group>"; };
+		974B2DBE1BA2773100F42CCA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		974B2DBF1BA2773100F42CCA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		974B2DC01BA2773100F42CCA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ARPhotoPicker.strings"; sourceTree = "<group>"; };
+		974B2DC11BA2775700F42CCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ARPhotoPicker.strings; sourceTree = "<group>"; };
+		974B2DC21BA2784A00F42CCA /* ARPhotoPickerMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARPhotoPickerMacros.h; sourceTree = "<group>"; };
+		974B2DC31BA2824E00F42CCA /* ARPhotoPickerPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPhotoPickerPreviewController.h; sourceTree = "<group>"; };
+		974B2DC41BA2824E00F42CCA /* ARPhotoPickerPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPhotoPickerPreviewController.m; sourceTree = "<group>"; };
+		974B2DC61BA282E400F42CCA /* UIView+ARPPAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ARPPAutoLayout.h"; sourceTree = "<group>"; };
+		974B2DC71BA282E400F42CCA /* UIView+ARPPAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ARPPAutoLayout.m"; sourceTree = "<group>"; };
 		97E5AD341BA01AF0003B43A2 /* ARPhotoPickerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPhotoPickerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E5AD381BA01AF0003B43A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97E5AD391BA01AF0003B43A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,6 +111,8 @@
 				974B2D9D1BA14D8900F42CCA /* ARPhotoPickerGroupController.m */,
 				974B2D981BA14D8900F42CCA /* ARPhotoPickerAssetsController.h */,
 				974B2D991BA14D8900F42CCA /* ARPhotoPickerAssetsController.m */,
+				974B2DC31BA2824E00F42CCA /* ARPhotoPickerPreviewController.h */,
+				974B2DC41BA2824E00F42CCA /* ARPhotoPickerPreviewController.m */,
 			);
 			path = Contollers;
 			sourceTree = "<group>";
@@ -107,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				974B2DB21BA14E2300F42CCA /* Icons.xcassets */,
+				974B2DBC1BA2759900F42CCA /* ARPhotoPicker.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -132,6 +147,8 @@
 			children = (
 				974B2DB51BA1763C00F42CCA /* PHAsset+ARPhotoPicker.h */,
 				974B2DB61BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m */,
+				974B2DC61BA282E400F42CCA /* UIView+ARPPAutoLayout.h */,
+				974B2DC71BA282E400F42CCA /* UIView+ARPPAutoLayout.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -200,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				97E5AD5E1BA01B90003B43A2 /* ARPhotoPicker.h */,
+				974B2DC21BA2784A00F42CCA /* ARPhotoPickerMacros.h */,
 				974B2DB41BA1761500F42CCA /* Category */,
 				974B2D971BA14D8900F42CCA /* Contollers */,
 				974B2D9E1BA14D8900F42CCA /* Resources */,
@@ -272,6 +290,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 97E5AD2B1BA01AF0003B43A2;
 			productRefGroup = 97E5AD351BA01AF0003B43A2 /* Products */;
@@ -289,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				974B2DBA1BA2759900F42CCA /* ARPhotoPicker.strings in Resources */,
 				97E5AD431BA01AF0003B43A2 /* Main.storyboard in Resources */,
 				97E5AD481BA01AF0003B43A2 /* LaunchScreen.xib in Resources */,
 				974B2DB31BA14E2300F42CCA /* Icons.xcassets in Resources */,
@@ -320,6 +340,8 @@
 				974B2DAB1BA14D8900F42CCA /* ARPhotoPickerGroupController.m in Sources */,
 				974B2DAA1BA14D8900F42CCA /* ARPhotoPickerController.m in Sources */,
 				97E5AD3A1BA01AF0003B43A2 /* main.m in Sources */,
+				974B2DC51BA2824E00F42CCA /* ARPhotoPickerPreviewController.m in Sources */,
+				974B2DC81BA282E400F42CCA /* UIView+ARPPAutoLayout.m in Sources */,
 				974B2DAC1BA14D8900F42CCA /* ARPhotoPickerAssetCell.m in Sources */,
 				974B2DB71BA1763C00F42CCA /* PHAsset+ARPhotoPicker.m in Sources */,
 				974B2DB01BA14D8900F42CCA /* ARPhotoPickerGroupCell.m in Sources */,
@@ -345,10 +367,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		974B2DBC1BA2759900F42CCA /* ARPhotoPicker.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				974B2DC01BA2773100F42CCA /* zh-Hans */,
+				974B2DC11BA2775700F42CCA /* en */,
+			);
+			name = ARPhotoPicker.strings;
+			sourceTree = "<group>";
+		};
 		97E5AD411BA01AF0003B43A2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				97E5AD421BA01AF0003B43A2 /* Base */,
+				974B2DBE1BA2773100F42CCA /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -357,6 +389,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				97E5AD471BA01AF0003B43A2 /* Base */,
+				974B2DBF1BA2773100F42CCA /* zh-Hans */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";

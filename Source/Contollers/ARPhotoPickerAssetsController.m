@@ -10,6 +10,8 @@
 #import "ARPhotoPickerAssetCell.h"
 #import "ARPhotoPickerAssetsFooterView.h"
 #import <Photos/Photos.h>
+#import "ARPhotoPickerMacros.h"
+#import "UIView+ARPPAutoLayout.h"
 
 NSString * const reuseIdentifier = @"ARPhotoPickerAssetCell";
 NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView";
@@ -81,44 +83,20 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
     [self.navigationItem setRightBarButtonItem:cancelItem];
     
     UIToolbar *bottomBar = [[UIToolbar alloc] init];
+    bottomBar.tintColor = [UIColor colorWithWhite:51/255.0 alpha:1];
     bottomBar.barTintColor = [UIColor colorWithWhite:244/255.0 alpha:1];
     [self.view addSubview:bottomBar];
     
-    UIBarButtonItem *previewItem = [[UIBarButtonItem alloc] initWithTitle:@"preview" style:UIBarButtonItemStylePlain target:self action:@selector(previewItemClicked:)];
+    UIBarButtonItem *previewItem = [[UIBarButtonItem alloc] initWithTitle:ARPPLocalString(@"preview") style:UIBarButtonItemStylePlain target:self action:@selector(previewItemClicked:)];
     UIBarButtonItem *flexItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *sendItem = [[UIBarButtonItem alloc] initWithTitle:@"send" style:UIBarButtonItemStylePlain target:self action:@selector(sendItemClicked:)];
+    UIBarButtonItem *sendItem = [[UIBarButtonItem alloc] initWithTitle:ARPPLocalString(@"send") style:UIBarButtonItemStylePlain target:self action:@selector(sendItemClicked:)];
     
     [bottomBar setItems:@[previewItem,flexItem,sendItem]];
     
-    bottomBar.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:bottomBar
-                                                         attribute:NSLayoutAttributeLeft
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.view
-                                                         attribute:NSLayoutAttributeLeft
-                                                        multiplier:1
-                                                           constant:0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:bottomBar
-                                                          attribute:NSLayoutAttributeRight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeRight
-                                                         multiplier:1
-                                                           constant:0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:bottomBar
-                                                          attribute:NSLayoutAttributeBottom
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeBottom
-                                                         multiplier:1
-                                                           constant:0]];
-    [bottomBar addConstraint:[NSLayoutConstraint constraintWithItem:bottomBar
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:nil
-                                                          attribute:NSLayoutAttributeNotAnAttribute
-                                                         multiplier:1
-                                                           constant:44]];
+    //layout
+    
+    [bottomBar autoAlignEdgesToSuperViewWithOptions:UIViewEdgeTypeOptionsLeft|UIViewEdgeTypeOptionsRight|UIViewEdgeTypeOptionsBottom];
+    [bottomBar autoConstraintToHeight:44];
 }
 
 #pragma mark - custom event methods
@@ -144,13 +122,18 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.fetchResult.count;
+    return self.fetchResult.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ARPhotoPickerAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    PHAsset *asset = [self.fetchResult objectAtIndex:indexPath.row];
-    [cell configurationWithAsset:asset showCheckmark:self.collectionView.allowsMultipleSelection];
+    if (indexPath.row == 0) {
+        cell.imageView.image = [UIImage imageNamed:@"camera_shot"];
+        cell.checkmarkImageView.hidden = YES;
+    }else{
+        PHAsset *asset = [self.fetchResult objectAtIndex:indexPath.row - 1];
+        [cell configurationWithAsset:asset showCheckmark:self.collectionView.allowsMultipleSelection];
+    }
     return cell;
 }
 
@@ -166,8 +149,13 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    PHAsset *asset = [self.fetchResult objectAtIndex:indexPath.row];
-    [[NSNotificationCenter defaultCenter] postNotificationName:ARPhotoPickerAssetsControllerSelectAssetNotification object:asset];
+    if (indexPath.row > 0) {
+        PHAsset *asset = [self.fetchResult objectAtIndex:indexPath.row - 1];
+        [[NSNotificationCenter defaultCenter] postNotificationName:ARPhotoPickerAssetsControllerSelectAssetNotification object:asset];
+    }else{
+    //take photo
+        
+    }
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ARPhotoPickerAssetsFooterView.h"
 #import <Photos/Photos.h>
+#import "ARPhotoPickerMacros.h"
 
 @implementation ARPhotoPickerAssetsFooterView
 
@@ -17,7 +18,8 @@
 
 - (void)configurationWithAssetsResult:(PHFetchResult *)result {
     NSUInteger imagesCount = [result countOfAssetsWithMediaType:PHAssetMediaTypeImage];
-    self.textLabel.text = [NSString stringWithFormat:@"%lu Images",imagesCount];
+    NSString *string = imagesCount > 1 ? ARPPLocalString(@"Photos") : ARPPLocalString(@"Photo");
+    self.textLabel.text = [NSString stringWithFormat:@"%lu %@",imagesCount,string];
 }
 
 @end

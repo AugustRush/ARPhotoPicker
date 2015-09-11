@@ -9,6 +9,7 @@
 #import "ARPhotoPickerGroupController.h"
 #import "ARPhotoPickerGroupCell.h"
 #import "ARPhotoPickerAssetsController.h"
+#import "ARPhotoPickerMacros.h"
 
 @interface ARPhotoPickerGroupController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -59,7 +60,7 @@ static NSString * const reuseIdentifier = @"ARPhotoPickerGroupCell";
 
 - (void)_setUp {
     
-    self.navigationItem.title = @"My Photos";
+    self.navigationItem.title = ARPPLocalString(@"My Photos");
     self.smartAlbumFetchResult = [PHAssetCollection fetchAssetCollectionsWithType:
                                   self.collectionType
                                                                           subtype:self.collectionSubType
@@ -71,7 +72,7 @@ static NSString * const reuseIdentifier = @"ARPhotoPickerGroupCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"ARPhotoPickerGroupCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelItemClicked:)];
-    self.navigationItem.leftBarButtonItem = cancelItem;
+    self.navigationItem.rightBarButtonItem = cancelItem;
     
     if (self.autoPushToUserPhotoLibrary && self.smartAlbumFetchResult.count > 0) {
         PHAssetCollection *collection = [self.smartAlbumFetchResult objectAtIndex:0];
