@@ -20,4 +20,9 @@ FOUNDATION_EXPORT NSString * const ARPhotoPickerAssetsControllerSelectAssetNotif
 
 - (instancetype)initWithAssetsCollection:(PHAssetCollection *)collection NS_DESIGNATED_INITIALIZER;
 
+// depecated
+- (instancetype)initWithCollectionViewLayout:(UICollectionViewLayout *)layout NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_UNAVAILABLE;
+
 @end

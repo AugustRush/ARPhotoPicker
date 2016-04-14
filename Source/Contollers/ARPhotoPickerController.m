@@ -54,12 +54,12 @@ NSString *const ARPhotoPickerControllerOriginalImageKey = @"ARPhotoPickerControl
 
 - (void)_setUp {
     
-    self.navigationBar.backgroundColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1.0];
-    [self.navigationBar setBarTintColor:[UIColor blackColor]];
-    [self.navigationBar setTintColor:[UIColor whiteColor]];
+//    self.navigationBar.backgroundColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1.0];
+//    [self.navigationBar setBarTintColor:[UIColor blackColor]];
+//    [self.navigationBar setTintColor:[UIColor whiteColor]];
     
-    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],
-                                               NSFontAttributeName:[UIFont boldSystemFontOfSize:17.0]};
+//    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],
+//                                               NSFontAttributeName:[UIFont boldSystemFontOfSize:17.0]};
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(assetsControllerDidDismissed:)
