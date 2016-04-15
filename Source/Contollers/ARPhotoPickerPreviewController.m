@@ -20,7 +20,7 @@
 #pragma mark - lifeCycle methods
 
 - (instancetype)initWithAssets:(NSArray *)assets {
-    self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationVertical options:@{UIPageViewControllerOptionInterPageSpacingKey:@30.f}];
+    self = [super initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:@{UIPageViewControllerOptionInterPageSpacingKey:@30.f}];
     if (self) {
         self.assets = assets;
         self.dataSource = self;

@@ -1,0 +1,19 @@
+PODS:
+  - EasyLayout (0.6.0)
+
+DEPENDENCIES:
+  - EasyLayout (from `https://github.com/ProfessionalIsFunny/EasyLayout.git`)
+
+EXTERNAL SOURCES:
+  EasyLayout:
+    :git: https://github.com/ProfessionalIsFunny/EasyLayout.git
+
+CHECKOUT OPTIONS:
+  EasyLayout:
+    :commit: 4e587ef964d4622bbceddb3179473d558f099afb
+    :git: https://github.com/ProfessionalIsFunny/EasyLayout.git
+
+SPEC CHECKSUMS:
+  EasyLayout: 10bf1dfd00304bec33322216378bda860ce2d1ed
+
+COCOAPODS: 0.39.0

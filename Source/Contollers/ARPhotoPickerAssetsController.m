@@ -93,6 +93,7 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
     //layout
     [_bottomBar autoAlignEdgesToSuperViewWithOptions:ARViewEdgeTypeOptionsLeft|ARViewEdgeTypeOptionsRight|ARViewEdgeTypeOptionsBottom];
     [_bottomBar autoConstraintToHeight:44];
+    [_bottomBar setNumber:0];
 }
 
 #pragma mark - custom event methods

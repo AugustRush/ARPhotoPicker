@@ -17,8 +17,10 @@
 }
 
 - (void)setNumber:(NSUInteger)number {
-    self.numberButton.hidden = number > 0 ? NO:YES;
+    BOOL beyondZero = number > 0 ? NO:YES;
+    self.numberButton.hidden = beyondZero;
     [self.numberButton setTitle:[NSString stringWithFormat:@"%lu",number] forState:UIControlStateNormal];
+    self.leftButton.enabled = !beyondZero;
     [self setNeedsLayout];
     [self layoutIfNeeded];
 }

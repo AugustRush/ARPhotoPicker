@@ -68,7 +68,7 @@ static NSString * const reuseIdentifier = @"ARPhotoPickerGroupCell";
     
     self.anyAlbumFetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:nil];
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.tableView registerNib:[UINib nibWithNibName:@"ARPhotoPickerGroupCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelItemClicked:)];

@@ -23,7 +23,6 @@ NSString *const ARPhotoPickerControllerOriginalImageKey = @"ARPhotoPickerControl
 
 - (instancetype)init {
     ARPhotoPickerGroupController *groupController = [[ARPhotoPickerGroupController alloc] init];
-    
     self = [super initWithRootViewController:groupController];
     if (self) {
         _autoPushToUserPhotoLibrary = YES;
