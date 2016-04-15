@@ -10,13 +10,12 @@
 #import "PHAsset+ARPhotoPicker.h"
 #import <EasyLayout.h>
 
-@interface ARPhotoPickerAssetItemViewController ()<UIScrollViewDelegate>
+@interface ARPhotoPickerAssetItemViewController () <UIScrollViewDelegate>
 
 @property(nonatomic, strong) UIScrollView *scrollView;
+@property(nonatomic, strong) UIView *contentView;
 @property(nonatomic, strong) UIImageView *imageView;
-@property(nonatomic, weak) NSLayoutConstraint *imageCenterXConstraint;
-@property(nonatomic, weak) NSLayoutConstraint *imageCenterYConstraint;
-@property(nonatomic, weak) NSLayoutConstraint *imageWidthConstraint;
+
 @property(nonatomic, weak) NSLayoutConstraint *imageHeightConstraint;
 
 @property(nonatomic, strong) UITapGestureRecognizer *doubleTapGesture;
@@ -53,29 +52,42 @@
 - (void)_setUp {
 
   self.scrollView = [[UIScrollView alloc] init];
+  self.scrollView.minimumZoomScale = 1.0;
+  self.scrollView.maximumZoomScale = 2.0;
+  self.scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
   self.scrollView.delegate = self;
   [self.view addSubview:self.scrollView];
+
+  self.contentView = [[UIView alloc] init];
+  [self.scrollView addSubview:self.contentView];
 
   self.imageView = [[UIImageView alloc] init];
   self.imageView.contentMode = UIViewContentModeScaleAspectFit;
   self.imageView.backgroundColor = [UIColor grayColor];
-  [self.scrollView addSubview:self.imageView];
+  [self.contentView addSubview:self.imageView];
 
   // layout
+
   [self.scrollView makeConstraints:^(ELConstraintsMaker *make) {
     make.ELAllEdges.equalTo(@0);
   }];
 
-  [self.imageView makeConstraints:^(ELConstraintsMaker *make) {
-    make.ELCenter.equalTo(self.scrollView);
-    make.ELWidth.equalTo(self.scrollView);
+  [self.contentView makeConstraints:^(ELConstraintsMaker *make) {
+    make.ELAllEdges.equalTo(@0);
+    make.ELSize.equalTo(self.view);
   }];
-  // imageView gesture
+
+  [self.imageView makeConstraints:^(ELConstraintsMaker *make) {
+    make.ELCenter.equalTo(@0);
+    make.ELWidth.equalTo(self.contentView);
+  }];
+
+  // contentView gesture
   self.doubleTapGesture = [[UITapGestureRecognizer alloc]
       initWithTarget:self
               action:@selector(doubleTapGestureHandle:)];
   self.doubleTapGesture.numberOfTapsRequired = 2;
-  [self.imageView addGestureRecognizer:self.doubleTapGesture];
+  [self.contentView addGestureRecognizer:self.doubleTapGesture];
 
   // fill image
   [_asset requestOriginalImageCompletion:^(UIImage *image, NSDictionary *info) {
@@ -102,8 +114,26 @@
 
 - (void)doubleTapGestureHandle:(UITapGestureRecognizer *)tap {
   if (tap.state == UIGestureRecognizerStateEnded) {
-    [self.imageWidthConstraint setActive:NO];
+    if (fabs(self.scrollView.zoomScale - self.scrollView.maximumZoomScale) <
+        0.1) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+      [self.scrollView setZoomScale:self.scrollView.minimumZoomScale
+                           animated:YES];
+    } else {
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+      [self.scrollView setZoomScale:self.scrollView.maximumZoomScale
+                           animated:YES];
+    }
   }
+}
+
+#pragma mark - UIScrollViewDelegate methods
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+  return self.contentView;
 }
 
 @end
