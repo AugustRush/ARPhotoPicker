@@ -15,8 +15,7 @@
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property(nonatomic, strong) UIView *contentView;
 @property(nonatomic, strong) UIImageView *imageView;
-
-@property(nonatomic, weak) NSLayoutConstraint *imageHeightConstraint;
+@property(nonatomic, assign) BOOL scaled;
 
 @property(nonatomic, strong) UITapGestureRecognizer *doubleTapGesture;
 
@@ -52,8 +51,8 @@
 - (void)_setUp {
 
   self.scrollView = [[UIScrollView alloc] init];
-  self.scrollView.minimumZoomScale = 1.0;
-  self.scrollView.maximumZoomScale = 2.0;
+  //  self.scrollView.minimumZoomScale = 1.0;
+  //  self.scrollView.maximumZoomScale = 2.0;
   self.scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
   self.scrollView.delegate = self;
   [self.view addSubview:self.scrollView];
@@ -98,42 +97,36 @@
 
 - (void)aspectToFitHeightWithImage:(UIImage *)image {
   CGFloat ratio = image.size.height / image.size.width;
-  self.imageHeightConstraint =
-      [NSLayoutConstraint constraintWithItem:self.imageView
-                                   attribute:NSLayoutAttributeHeight
-                                   relatedBy:NSLayoutRelationEqual
-                                      toItem:self.imageView
-                                   attribute:NSLayoutAttributeWidth
-                                  multiplier:ratio
-                                    constant:0];
-  [self.imageHeightConstraint setActive:YES];
+  [self.imageView updateConstraints:^(ELConstraintsMaker *make) {
+    make.ELHeight.equalTo(self.imageView.ELWidth)
+        .multiplier(ratio)
+        .constraint();
+  }];
   [self.view layoutIfNeeded];
+}
+
+- (void)animatedZoomWithScale:(CGFloat)scale {
+  [self.contentView updateConstraints:^(ELConstraintsMaker *make) {
+    make.ELWidth.equalTo(self.view).multiplier(scale);
+  }];
+  [UIView animateWithDuration:0.25
+                   animations:^{
+                     [self.scrollView layoutIfNeeded];
+                   }];
 }
 
 #pragma mark - event methods
 
 - (void)doubleTapGestureHandle:(UITapGestureRecognizer *)tap {
   if (tap.state == UIGestureRecognizerStateEnded) {
-    if (fabs(self.scrollView.zoomScale - self.scrollView.maximumZoomScale) <
-        0.1) {
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
-      [self.scrollView setZoomScale:self.scrollView.minimumZoomScale
-                           animated:YES];
+      CGFloat scale = CGRectGetHeight(self.view.bounds) / CGRectGetHeight(self.imageView.bounds);
+    if (!_scaled) {
+      [self animatedZoomWithScale:scale];
     } else {
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
-      [self.scrollView setZoomScale:self.scrollView.maximumZoomScale
-                           animated:YES];
+      [self animatedZoomWithScale:1.0];
     }
+    self.scaled = !self.scaled;
   }
-}
-
-#pragma mark - UIScrollViewDelegate methods
-
-- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
-}
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-  return self.contentView;
 }
 
 @end
