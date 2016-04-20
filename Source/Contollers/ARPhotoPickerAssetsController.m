@@ -11,9 +11,9 @@
 #import "ARPhotoPickerAssetsFooterView.h"
 #import <Photos/Photos.h>
 #import "ARPhotoPickerMacros.h"
-#import "UIView+ARPPAutoLayout.h"
 #import "ARPhotoPickerAssetsToolBar.h"
 #import "ARPhotoPickerPreviewController.h"
+#import <EasyLayout.h>
 
 NSString * const reuseIdentifier = @"ARPhotoPickerAssetCell";
 NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView";
@@ -91,8 +91,12 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
     [self.view addSubview:_bottomBar];
     
     //layout
-    [_bottomBar autoAlignEdgesToSuperViewWithOptions:ARViewEdgeTypeOptionsLeft|ARViewEdgeTypeOptionsRight|ARViewEdgeTypeOptionsBottom];
-    [_bottomBar autoConstraintToHeight:44];
+    [_bottomBar makeConstraints:^(ELConstraintsMaker *make) {
+        make.combination(@[ELCLeft,ELCRight,ELCBottom])
+            .equalTo(@0);
+        make.ELHeight.equalTo(@44);
+        make.ELWidth.greaterThanOrEqualTo(@60);
+    }];
     [_bottomBar setNumber:0];
 }
 

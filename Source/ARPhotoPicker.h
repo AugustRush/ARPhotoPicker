@@ -14,6 +14,5 @@
 #import "ARPhotoPickerAssetsController.h"
 #import "PHAsset+ARPhotoPicker.h"
 #import "ARPhotoPickerMacros.h"
-#import "UIView+ARPPAutoLayout.h"
 
 #endif

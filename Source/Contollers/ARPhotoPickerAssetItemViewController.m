@@ -17,7 +17,7 @@
 @property(nonatomic, strong) UIImageView *imageView;
 @property(nonatomic, assign) BOOL scaled;
 
-@property(nonatomic, strong) UITapGestureRecognizer *doubleTapGesture;
+//@property(nonatomic, strong) UITapGestureRecognizer *doubleTapGesture;
 
 @end
 
@@ -44,6 +44,12 @@
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
+}
+
+#pragma mark - system methods
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 #pragma mark - private methods
@@ -82,11 +88,17 @@
   }];
 
   // contentView gesture
-  self.doubleTapGesture = [[UITapGestureRecognizer alloc]
+  UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc]
       initWithTarget:self
               action:@selector(doubleTapGestureHandle:)];
-  self.doubleTapGesture.numberOfTapsRequired = 2;
-  [self.contentView addGestureRecognizer:self.doubleTapGesture];
+  doubleTapGesture.numberOfTapsRequired = 2;
+  [self.contentView addGestureRecognizer:doubleTapGesture];
+
+  UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc]
+      initWithTarget:self
+              action:@selector(singleTapGestureHandle:)];
+  [singleTapGesture requireGestureRecognizerToFail:doubleTapGesture];
+  [self.contentView addGestureRecognizer:singleTapGesture];
 
   // fill image
   [_asset requestOriginalImageCompletion:^(UIImage *image, NSDictionary *info) {
@@ -115,18 +127,40 @@
                    }];
 }
 
+- (void)animatedNavigationBarAndStatusBarHidden:(BOOL)hidden {
+  [[UIApplication sharedApplication]
+      setStatusBarHidden:hidden
+           withAnimation:UIStatusBarAnimationNone];
+  [self.navigationController setNavigationBarHidden:hidden animated:YES];
+}
+
 #pragma mark - event methods
 
 - (void)doubleTapGestureHandle:(UITapGestureRecognizer *)tap {
   if (tap.state == UIGestureRecognizerStateEnded) {
-      CGFloat scale = CGRectGetHeight(self.view.bounds) / CGRectGetHeight(self.imageView.bounds);
+    CGFloat scale = CGRectGetHeight(self.view.bounds) /
+                    CGRectGetHeight(self.imageView.bounds);
     if (!_scaled) {
       [self animatedZoomWithScale:scale];
+      [self animatedNavigationBarAndStatusBarHidden:YES];
     } else {
       [self animatedZoomWithScale:1.0];
     }
     self.scaled = !self.scaled;
   }
+}
+
+- (void)singleTapGestureHandle:(UITapGestureRecognizer *)tap {
+  if (tap.state == UIGestureRecognizerStateEnded) {
+    BOOL isHidden = self.navigationController.isNavigationBarHidden;
+    [self animatedNavigationBarAndStatusBarHidden:!isHidden];
+  }
+}
+
+#pragma mark - UIScrollViewDelegate methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+  [self animatedNavigationBarAndStatusBarHidden:YES];
 }
 
 @end
