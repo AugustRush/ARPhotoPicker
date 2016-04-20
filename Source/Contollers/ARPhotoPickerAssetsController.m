@@ -21,6 +21,9 @@ NSString * const footerReuseIdemtifier = @"ARPhotoPickerAssetsFooterView";
 NSString * const ARPhotoPickerAssetsControllerDismissNotification = @"ARPhotoPickerAssetsControllerDismissNotification";
 NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhotoPickerAssetsControllerSelectAssetNotification";
 
+NSUInteger const ARPhotoPickerAssetsControllerModeSelecting = 1;
+NSUInteger const ARPhotoPickerAssetsControllerModeNone = 0;
+
 @interface ARPhotoPickerAssetsController ()
 
 @property (nonatomic, weak) UICollectionViewFlowLayout *flowLayout;
@@ -55,6 +58,7 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
     [super viewDidLoad];
     
     [self _setUp];
+    [self setNavigationBarItemsWithMode:ARPhotoPickerAssetsControllerModeNone animated:NO];
 }
 
 - (void)dealloc {
@@ -68,7 +72,7 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
 #pragma mark - private methdos
 
 - (void)_setUp {
-
+    
     PHFetchOptions *fetchOptions = [PHFetchOptions new];
     // predicate
     fetchOptions.predicate = [NSPredicate predicateWithFormat: @"mediaType == %d", PHAssetMediaTypeImage];
@@ -100,12 +104,33 @@ NSString * const ARPhotoPickerAssetsControllerSelectAssetNotification = @"ARPhot
     [_bottomBar setNumber:0];
 }
 
+#pragma mark - private methods
+
+- (void)setNavigationBarItemsWithMode:(NSUInteger)mode animated:(BOOL)animated {
+    if (mode == ARPhotoPickerAssetsControllerModeNone) {
+        UIBarButtonItem *selectItem = [[UIBarButtonItem alloc] initWithTitle:ARPPLocalString(@"Select") style:UIBarButtonItemStylePlain target:self action:@selector(selectItemTapped:)];
+        [self.navigationItem setLeftBarButtonItem:nil animated:animated];
+        [self.navigationItem setRightBarButtonItem:selectItem animated:animated];
+    }else if(mode == ARPhotoPickerAssetsControllerModeSelecting){
+        UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelItemTapped:)];
+        UIBarButtonItem *selectAllItem = [[UIBarButtonItem alloc] initWithTitle:ARPPLocalString(@"All") style:UIBarButtonItemStylePlain target:self action:@selector(selectAllItemTapped:)];
+        [self.navigationItem setLeftBarButtonItem:selectAllItem animated:animated];
+        [self.navigationItem setRightBarButtonItem:cancelItem animated:animated];
+    }
+}
+
 #pragma mark - custom event methods
 
-- (void)cancelItemClicked:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:ARPhotoPickerAssetsControllerDismissNotification object:nil];
-    }];
+- (void)selectItemTapped:(id)sender {
+    [self setNavigationBarItemsWithMode:ARPhotoPickerAssetsControllerModeSelecting animated:YES];
+}
+
+- (void)cancelItemTapped:(id)sender {
+    [self setNavigationBarItemsWithMode:ARPhotoPickerAssetsControllerModeNone animated:YES];
+}
+
+- (void)selectAllItemTapped:(id)sender {
+    
 }
 
 - (void)previewItemClicked:(id)sender {
