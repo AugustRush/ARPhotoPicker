@@ -15,7 +15,6 @@
 
 @property (nonatomic, weak) id<ARPhotoPickerGroupControllerDelegate> delegate;
 @property (nonatomic, assign) BOOL autoPushToUserPhotoLibrary; //will directly push to user's photos library
-@property (nonatomic, assign) BOOL allowsMultipleSelection; // default is YES
 @property (nonatomic, assign) PHAssetCollectionType collectionType;
 @property (nonatomic, assign) PHAssetCollectionSubtype collectionSubType;
 

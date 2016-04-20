@@ -10,6 +10,7 @@
 #import "ARPhotoPickerGroupCell.h"
 #import "ARPhotoPickerAssetsController.h"
 #import "ARPhotoPickerMacros.h"
+#import "ARPhotoPickerGroupController+ARPhotoPicker.h"
 
 @interface ARPhotoPickerGroupController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -83,7 +84,7 @@ static NSString * const reuseIdentifier = @"ARPhotoPickerGroupCell";
 - (void)showAssetsViewControllerWithCollection:(PHAssetCollection *)collection animated:(BOOL)animated {
     ARPhotoPickerAssetsController *assetsController = [[ARPhotoPickerAssetsController alloc] initWithAssetsCollection:collection];
     assetsController.title = collection.localizedTitle;
-    assetsController.allowsMultipleSelection = self.allowsMultipleSelection;
+    assetsController.allowsMultipleSelection = [[self photoPickerController] allowsMultipleSelection];
     [self.navigationController setViewControllers:@[self,assetsController] animated:animated];
 }
 

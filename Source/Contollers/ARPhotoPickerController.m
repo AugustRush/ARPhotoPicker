@@ -28,7 +28,6 @@ NSString *const ARPhotoPickerControllerOriginalImageKey = @"ARPhotoPickerControl
         _autoPushToUserPhotoLibrary = YES;
         _allowsMultipleSelection = YES;
         groupController.autoPushToUserPhotoLibrary = _autoPushToUserPhotoLibrary;
-        groupController.allowsMultipleSelection = _allowsMultipleSelection;
         groupController.delegate = self;
     }
     return self;
